@@ -38,3 +38,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    Lab04AlcocerTheme {
+        Greeting("Android")
+    }
+}
