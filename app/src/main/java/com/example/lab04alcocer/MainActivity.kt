@@ -10,6 +10,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lab04alcocer.ui.theme.Lab04AlcocerTheme
 
@@ -34,6 +37,9 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
+        color = Color.Blue,                 // Color del texto
+        fontSize = 24.sp,                   // Tamaño de la letra
+        fontWeight = FontWeight.Bold,       // Negrita
         modifier = modifier
     )
 }
@@ -46,22 +52,3 @@ fun GreetingPreview() {
     }
 }
 
-fun ViewHolaCurso() {
-    Column(
-        modifier = Modifier
-            .fillMaxWith()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Welcome to the Course!",
-            fontSize = 28.sp,
-            fontWeight = FontWeigh.Bold
-        )
-        Spacer(modifier = Modifier.heigh(16.dp))
-        Text(
-            text = "Hello, Student!",
-            fontSize = 20.xD
-
-    }
-}
