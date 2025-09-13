@@ -3,65 +3,62 @@ package com.example.lab04alcocer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.lab04alcocer.ui.theme.Lab04AlcocerTheme
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            Lab04AlcocerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            // Aquí definimos la UI
+            MyApp()
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Lab04AlcocerTheme {
-        Greeting("Android")
-    }
-}
-
-fun ViewHolaCurso() {
+fun MyApp() {
+    // Colocamos varios componentes
     Column(
         modifier = Modifier
-            .fillMaxWith()
+            .fillMaxSize()
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Text(
-            text = "Welcome to the Course!",
-            fontSize = 28.sp,
-            fontWeight = FontWeigh.Bold
-        )
-        Spacer(modifier = Modifier.heigh(16.dp))
-        Text(
-            text = "Hello, Student!",
-            fontSize = 20.xD
+        // Componente 1: Botón con estilo
+        Button(
+            onClick = { /* Acción del botón */ },
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Presionar",
+                fontSize = 18.sp,
+                color = Color.White
+            )
+        }
 
+        // Componente 2: Texto de ejemplo (para que luego lo modifiques)
+        Text(
+            text = "Soy el segundo componente",
+            fontSize = 22.sp,
+            color = Color.Blue
+        )
+
+        // Componente 3: Caja de texto
+        var texto by remember { mutableStateOf("") }
+        BasicTextField(
+            value = texto,
+            onValueChange = { texto = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        )
     }
 }
