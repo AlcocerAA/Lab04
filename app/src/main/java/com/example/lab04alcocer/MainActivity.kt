@@ -3,62 +3,65 @@ package com.example.lab04alcocer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.example.lab04alcocer.ui.theme.Lab04AlcocerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
-            // Aquí definimos la UI
-            MyApp()
+            Lab04AlcocerTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Column(modifier = Modifier.padding(innerPadding)) {
+                        Greeting("Android")   // Primer componente (modificado)
+                        SecondComponent()    // Segundo componente (modificado)
+                    }
+                }
+            }
         }
     }
 }
 
 @Composable
-fun MyApp() {
-    // Colocamos varios componentes
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
-    ) {
-        // Componente 1: Botón con estilo
-        Button(
-            onClick = { /* Acción del botón */ },
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(
-                text = "Presionar",
-                fontSize = 18.sp,
-                color = Color.White
-            )
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "¡Hola, $name!",
+        color = Color(0xFF6200EE),
+        fontSize = 26.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun SecondComponent() {
+    Text(
+        text = "Este es el segundo componente con nuevo estilo",
+        color = Color.Gray,
+        fontSize = 18.sp
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    Lab04AlcocerTheme {
+        Column {
+            Greeting("Android")
+            SecondComponent()
         }
-
-        // Componente 2: Texto de ejemplo (para que luego lo modifiques)
-        Text(
-            text = "Soy el segundo componente",
-            fontSize = 22.sp,
-            color = Color.Blue
-        )
-
-        // Componente 3: Caja de texto
-        var texto by remember { mutableStateOf("") }
-        BasicTextField(
-            value = texto,
-            onValueChange = { texto = it },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        )
     }
 }
