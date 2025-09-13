@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +25,8 @@ class MainActivity : ComponentActivity() {
             Lab04AlcocerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        Greeting("Android")   // Primer componente (modificado)
-                        SecondComponent()    // Segundo componente (modificado)
+                        Greeting("Android")   // Primer componente
+                        SecondComponent()    // Segundo componente
                     }
                 }
             }
