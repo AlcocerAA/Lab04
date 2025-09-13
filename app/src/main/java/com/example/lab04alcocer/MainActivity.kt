@@ -1,4 +1,4 @@
-package com.example.myapp
+package com.example.lab04alcocer
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,19 +9,19 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapp.ui.theme.MyAppTheme
+import com.example.lab04alcocer.ui.theme.Lab04AlcocerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyAppTheme {
+            Lab04AlcocerTheme {
+                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android Studio 🚀") // ← aquí cambié el texto
+                    Greeting("Android")
                 }
             }
         }
@@ -29,14 +29,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Bienvenido a $name, estamos listos para programar!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyAppTheme {
-        Greeting("Preview")
-    }
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hola desde la rama main y también desde Upgrading-component-1",
+        modifier = modifier
+    )
 }
